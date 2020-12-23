@@ -1,0 +1,370 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : mySQL
+Source Server Version : 50562
+Source Host           : localhost:3306
+Source Database       : liver
+
+Target Server Type    : MYSQL
+Target Server Version : 50562
+File Encoding         : 65001
+
+Date: 2020-12-21 14:14:49
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for ct_image
+-- ----------------------------
+DROP TABLE IF EXISTS `ct_image`;
+CREATE TABLE `ct_image` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ct_record_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ct_image
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ct_record
+-- ----------------------------
+DROP TABLE IF EXISTS `ct_record`;
+CREATE TABLE `ct_record` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ct_record
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ct_scan_info
+-- ----------------------------
+DROP TABLE IF EXISTS `ct_scan_info`;
+CREATE TABLE `ct_scan_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ct_record_id` bigint(20) DEFAULT NULL,
+  `型号` varchar(255) DEFAULT NULL,
+  `管电压` double DEFAULT NULL,
+  `管电流` double DEFAULT NULL,
+  `探测器宽度` double DEFAULT NULL,
+  `重建算法` varchar(255) DEFAULT NULL,
+  `扫描野` varchar(255) DEFAULT NULL,
+  `转速` double DEFAULT NULL,
+  `螺旋` varchar(255) DEFAULT NULL,
+  `层厚` double DEFAULT NULL,
+  `层间距` double DEFAULT NULL,
+  `重建层厚` double DEFAULT NULL,
+  `造影剂名称` varchar(255) DEFAULT NULL,
+  `注射量` varchar(255) DEFAULT NULL,
+  `流速` varchar(255) DEFAULT NULL,
+  `增强三期扫描` varchar(255) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ct_scan_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for definiteness_ct
+-- ----------------------------
+DROP TABLE IF EXISTS `definiteness_ct`;
+CREATE TABLE `definiteness_ct` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ct_image_id` bigint(20) DEFAULT NULL,
+  `位置` varchar(255) DEFAULT NULL,
+  `主要肝段` varchar(255) DEFAULT NULL,
+  `平扫密度` varchar(255) DEFAULT NULL,
+  `强化包膜` int(20) DEFAULT NULL,
+  `包膜完整性` int(20) DEFAULT NULL,
+  `非强化包膜` int(20) DEFAULT NULL,
+  `瘤内出血` int(20) DEFAULT NULL,
+  `瘤内坏死` int(20) DEFAULT NULL,
+  `瘤内脂质沉积` int(20) DEFAULT NULL,
+  `静脉血栓形成` int(20) DEFAULT NULL,
+  `动脉期高强化` int(20) DEFAULT NULL,
+  `廓清表现` int(20) DEFAULT NULL,
+  `动脉期非环状高强化` int(20) DEFAULT NULL,
+  `非周边廓清` int(20) DEFAULT NULL,
+  `肝硬化` int(20) DEFAULT NULL,
+  `瘤内动脉` int(20) DEFAULT NULL,
+  `肿瘤边缘` varchar(255) DEFAULT NULL,
+  `肿瘤边界` varchar(255) DEFAULT NULL,
+  `瘤周强化` int(20) DEFAULT NULL,
+  `阈值增长` int(20) DEFAULT NULL,
+  `亚阈值增长` int(20) DEFAULT NULL,
+  `结中结征` int(20) DEFAULT NULL,
+  `马赛克征` int(20) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of definiteness_ct
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for definiteness_mri
+-- ----------------------------
+DROP TABLE IF EXISTS `definiteness_mri`;
+CREATE TABLE `definiteness_mri` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mri_image_id` bigint(20) DEFAULT NULL,
+  `位置` varchar(255) DEFAULT NULL,
+  `主要肝段` varchar(255) DEFAULT NULL,
+  `T1WI信号` varchar(255) DEFAULT NULL,
+  `T2WI信号` varchar(255) DEFAULT NULL,
+  `DWI信号` varchar(255) DEFAULT NULL,
+  `强化包膜` int(11) DEFAULT NULL,
+  `包膜完整性` int(11) DEFAULT NULL,
+  `非强化包膜` int(11) DEFAULT NULL,
+  `瘤内出血` int(11) DEFAULT NULL,
+  `瘤内坏死` int(11) DEFAULT NULL,
+  `瘤内脂质沉淀` int(11) DEFAULT NULL,
+  `静脉血栓形成` int(11) DEFAULT NULL,
+  `动脉期高强化` int(11) DEFAULT NULL,
+  `廓清表现` int(11) DEFAULT NULL,
+  `动脉期非环状高强化` int(11) DEFAULT NULL,
+  `非周边廓清` int(11) DEFAULT NULL,
+  `肝硬化` int(11) DEFAULT NULL,
+  `瘤内动脉` int(11) DEFAULT NULL,
+  `肿瘤边缘` varchar(255) DEFAULT NULL,
+  `肿瘤边界` varchar(255) DEFAULT NULL,
+  `瘤周强化` int(11) DEFAULT NULL,
+  `阈值增长` int(11) DEFAULT NULL,
+  `亚阈值增长` int(11) DEFAULT NULL,
+  `结中结征` int(11) DEFAULT NULL,
+  `马赛克征` int(11) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of definiteness_mri
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for mri_image
+-- ----------------------------
+DROP TABLE IF EXISTS `mri_image`;
+CREATE TABLE `mri_image` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mri_record_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of mri_image
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for mri_record
+-- ----------------------------
+DROP TABLE IF EXISTS `mri_record`;
+CREATE TABLE `mri_record` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of mri_record
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for mri_scan_info
+-- ----------------------------
+DROP TABLE IF EXISTS `mri_scan_info`;
+CREATE TABLE `mri_scan_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mri_record_id` bigint(20) DEFAULT NULL,
+  `mri_device_type` varchar(255) DEFAULT NULL,
+  `mri_field` varchar(255) DEFAULT NULL,
+  `T1_FSPGR` int(11) DEFAULT NULL,
+  `T1W1` int(11) DEFAULT NULL,
+  `water_AX_LAVA_FLEX_MASK` int(11) DEFAULT NULL,
+  `fs_T2WI` int(11) DEFAULT NULL,
+  `DWI` int(11) DEFAULT NULL,
+  `DTI` int(11) DEFAULT NULL,
+  `DKI` int(11) DEFAULT NULL,
+  `IVIM` int(11) DEFAULT NULL,
+  `ESWAN` int(11) DEFAULT NULL,
+  `IDEAL_IQ` int(11) DEFAULT NULL,
+  `MRS` int(11) DEFAULT NULL,
+  `API` int(11) DEFAULT NULL,
+  `mDIXON-Quant` int(11) DEFAULT NULL,
+  `T1_mapping` int(11) DEFAULT NULL,
+  `T2_mapping` int(11) DEFAULT NULL,
+  `LAVA` int(11) DEFAULT NULL,
+  `DCE-MRI` int(11) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of mri_scan_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for patient
+-- ----------------------------
+DROP TABLE IF EXISTS `patient`;
+CREATE TABLE `patient` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `sex` bigint(20) DEFAULT NULL,
+  `birthday` varchar(255) DEFAULT NULL,
+  `hospital_id` bigint(20) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `create_user` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of patient
+-- ----------------------------
+INSERT INTO `patient` VALUES ('1', 'user1', '1', '111', '111', '11111', '1111', '11111');
+
+-- ----------------------------
+-- Table structure for quantification_ct
+-- ----------------------------
+DROP TABLE IF EXISTS `quantification_ct`;
+CREATE TABLE `quantification_ct` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ct_image_id` bigint(20) DEFAULT NULL,
+  `大小_长径` double DEFAULT NULL,
+  `大小_短径` double DEFAULT NULL,
+  `体积_总体积` double DEFAULT NULL,
+  `体积_强化体积` double DEFAULT NULL,
+  `数量` bigint(255) DEFAULT NULL,
+  `CT值` bigint(255) DEFAULT NULL,
+  `动脉期` bigint(255) DEFAULT NULL,
+  `门静脉期` bigint(255) DEFAULT NULL,
+  `延迟期` bigint(255) DEFAULT NULL,
+  `包膜厚度` double DEFAULT NULL,
+  `能谱CT-动脉期碘水值` double DEFAULT NULL,
+  `能谱CT-门脉期碘水值` double DEFAULT NULL,
+  `能谱CT-延迟期碘水值` double DEFAULT NULL,
+  `能谱CT-平扫有效原子序数` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫能谱曲线类型` varchar(255) DEFAULT NULL,
+  `能谱CT-平扫能谱曲线斜率` double DEFAULT NULL,
+  `能谱CT-动脉期能谱曲线类型` varchar(255) DEFAULT NULL,
+  `能谱CT-动脉期能谱曲线斜率` double DEFAULT NULL,
+  `能谱CT-延迟期能谱曲线类型` varchar(255) DEFAULT NULL,
+  `能谱CT-延迟期能谱曲线斜率` double DEFAULT NULL,
+  `能谱CT-平扫40keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫50keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫60keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫70keV单能量CT值` bigint(255) DEFAULT NULL,
+	`能谱CT-平扫80keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫90keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫100keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫110keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫120keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫130keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-平扫140keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期40keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期50keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期60keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期70keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期80keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期90keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期100keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期110keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期120keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-动脉期130keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期40keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期50keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期60keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期70keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期80keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期90keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期100keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期110keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期120keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期130keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-门脉期140keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期40keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期50keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期60keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期70keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期80keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期90keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期100keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期110keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期120keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期130keV单能量CT值` bigint(255) DEFAULT NULL,
+  `能谱CT-延迟期140keV单能量CT值` bigint(255) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of quantification_ct
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for quantification_mri
+-- ----------------------------
+DROP TABLE IF EXISTS `quantification_mri`;
+CREATE TABLE `quantification_mri` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mri_image_id` bigint(20) DEFAULT NULL,
+  `大小` double DEFAULT NULL,
+  `体积` double DEFAULT NULL,
+  `数量` double DEFAULT NULL,
+  `包膜厚度` double DEFAULT NULL,
+  `DWI-ADC` bigint(255) DEFAULT NULL,
+  `DTI-ADC` bigint(255) DEFAULT NULL,
+  `DTI-FA` bigint(255) DEFAULT NULL,
+  `DKI-MK` bigint(255) DEFAULT NULL,
+  `DKI-Ka` bigint(255) DEFAULT NULL,
+  `DKI-Kr` bigint(255) DEFAULT NULL,
+  `DKI-FAK` bigint(255) DEFAULT NULL,
+  `DKI-MD` bigint(255) DEFAULT NULL,
+  `DKI-Da` bigint(255) DEFAULT NULL,
+  `DKI-Dr` bigint(255) DEFAULT NULL,
+  `DKI-FA` bigint(255) DEFAULT NULL,
+  `IVIM-Standard` bigint(255) DEFAULT NULL,
+  `IVIM-D-mono` bigint(255) DEFAULT NULL,
+  `IVIM-D*-mono` bigint(255) DEFAULT NULL,
+  `IVIM-fmono` bigint(255) DEFAULT NULL,
+  `IVIM-D-Bi` bigint(255) DEFAULT NULL,
+  `IVIM-D*-Bi` bigint(255) DEFAULT NULL,
+  `IVIM-fBi` bigint(255) DEFAULT NULL,
+  `IVIM-DDC` bigint(255) DEFAULT NULL,
+  `IVIM-α` bigint(255) DEFAULT NULL,
+  `ESWAN-R2*` bigint(255) DEFAULT NULL,
+  `ESWAN-T2*` bigint(255) DEFAULT NULL,
+  `ESWAN-相位值` bigint(255) DEFAULT NULL,
+  `ESWAN-幅度值` bigint(255) DEFAULT NULL,
+  `IDIQ-R2` bigint(255) DEFAULT NULL,
+  `IDIQ-脂肪分数` bigint(255) DEFAULT NULL,
+  `MRS-胆碱` bigint(255) DEFAULT NULL,
+  `MRS-肌酸` bigint(255) DEFAULT NULL,
+  `MRS-枸橼酸盐` bigint(255) DEFAULT NULL,
+  `APT-MTRasym` bigint(255) DEFAULT NULL,
+  `mDIXON-Quant-R2` bigint(255) DEFAULT NULL,
+  `mDIXON-Quant-脂肪分数` bigint(255) DEFAULT NULL,
+  `T1_mapping-T1` bigint(255) DEFAULT NULL,
+  `T2_mapping-T2` bigint(255) DEFAULT NULL,
+  `DCE-Ktrans` bigint(255) DEFAULT NULL,
+  `DCE-Kep` bigint(255) DEFAULT NULL,
+  `DCE-Ve` bigint(255) DEFAULT NULL,
+  `DCE-Vp` bigint(255) DEFAULT NULL,
+  `DCE-MSI` bigint(255) DEFAULT NULL,
+  `DCE-TTP` bigint(255) DEFAULT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of quantification_mri
+-- ----------------------------
