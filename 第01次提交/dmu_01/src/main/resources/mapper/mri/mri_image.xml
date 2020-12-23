@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.casit.dmu_1.mapper.mri.Mri_imageMapper">
+    <insert id="addMri_image" parameterType="Mri_image">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into mri_image value(null, #{mri_record_id});
+    </insert>
+    <delete id="deleteMri_image" parameterType="Integer">
+        delete from mri_image where mri_record_id=#{record_id};
+    </delete>
+    <select id="queryMri_imageIdByRecord_id" parameterType="Integer" resultType="Integer">
+        select id from mri_image where mri_record_id=#{record_id};
+    </select>
+</mapper>
